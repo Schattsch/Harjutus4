@@ -12,31 +12,33 @@ public class Suitcase {
     }
 
     public static void main(String[] args) {
-        Thing book = new Thing("Happiness in three steps", 2);
+        Thing book = new Thing("Happiness in Three Steps", 2);
         Thing mobile = new Thing("Nokia 3210", 1);
         Thing brick = new Thing("Brick", 4);
 
-        Suitcase suitcase = new Suitcase(5);
-        System.out.println(suitcase);
-
+        Suitcase suitcase = new Suitcase(10);
         suitcase.addThing(book);
-        System.out.println(suitcase);
-
         suitcase.addThing(mobile);
-        System.out.println(suitcase);
-
         suitcase.addThing(brick);
-        System.out.println(suitcase);
+
+        System.out.println("Your suitcase contains the following things:");
+        suitcase.printThings();
+        System.out.println("Total weight: " + suitcase.totalWeight() + " kg");
     }
 
     public void addThing(Thing thing) {
-        int totalWeight = totalWeight();
-        if (totalWeight + thing.getWeight() <= maximumWeight) {
+        if (totalWeight() + thing.getWeight() <= maximumWeight) {
             things.add(thing);
         }
     }
 
-    private int totalWeight() {
+    public void printThings() {
+        for (Thing thing : things) {
+            System.out.println(thing);
+        }
+    }
+
+    public int totalWeight() {
         int total = 0;
         for (Thing thing : things) {
             total += thing.getWeight();
