@@ -47,6 +47,7 @@ public class Suitcase {
     public String toString() {
         int numThings = things.size();
         int totalWeight = totalWeight();
+        // Here is where I corrected the grammar!
         return numThings + " thing" + (numThings != 1 ? "s" : "") + " (" + totalWeight + " kg)";
     }
 }
