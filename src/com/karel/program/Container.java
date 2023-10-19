@@ -17,6 +17,12 @@ public class Container {
         }
     }
 
+    public void printThings() {
+        for (Suitcase suitcase : suitcases) {
+            suitcase.printThings();
+        }
+    }
+
     public String toString() {
         int numSuitcases = suitcases.size();
         int totalWeight = totalWeight();
