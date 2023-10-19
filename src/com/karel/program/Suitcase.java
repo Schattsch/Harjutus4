@@ -24,6 +24,9 @@ public class Suitcase {
         System.out.println("Your suitcase contains the following things:");
         suitcase.printThings();
         System.out.println("Total weight: " + suitcase.totalWeight() + " kg");
+
+        Thing heaviest = suitcase.heaviestThing();
+        System.out.println("The heaviest thing: " + heaviest);
     }
 
     public void addThing(Thing thing) {
@@ -46,10 +49,24 @@ public class Suitcase {
         return total;
     }
 
+    public Thing heaviestThing() {
+        if (things.isEmpty()) {
+            return null;
+        }
+
+        Thing heaviest = things.get(0);
+        for (Thing thing : things) {
+            if (thing.getWeight() > heaviest.getWeight()) {
+                heaviest = thing;
+            }
+        }
+
+        return heaviest;
+    }
+
     public String toString() {
         int numThings = things.size();
         int totalWeight = totalWeight();
-        // Here is where I corrected the grammar!
         return numThings + " thing" + (numThings != 1 ? "s" : "") + " (" + totalWeight + " kg)";
     }
 }
